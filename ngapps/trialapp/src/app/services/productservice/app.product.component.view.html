@@ -1,0 +1,66 @@
+<div class="insert">
+    <table>
+        <tr>
+            <td>ProductId</td>
+            <td>
+                <input type="text" [(ngModel)]="product.ProductId">
+            </td>
+        </tr>
+        <tr>
+            <td>ProductName</td>
+            <td>
+                <input type="text" [(ngModel)]="product.ProductName">
+            </td>
+        </tr>
+        <tr>
+            <td>CategoryName</td>
+            <td>
+                <select [(ngModel)]="product.CategoryName">
+                    <option *ngFor="let c of categories" value="{{c}}">{{c}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Manufacturer</td>
+            <td>
+                <select [(ngModel)]="product.Manufacturer">
+                    <option *ngFor="let c of manufacturer" value="{{c}}">{{c}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                <input type="text" [(ngModel)]="product.Price">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="New" (click)="clear()">
+            </td>
+            <td>
+                <input type="button" value="Save" (click)="save()">
+            </td>
+            <td>
+                    <input type="button" value="delete" (click)="deleteSelected()">
+                </td>
+        </tr>
+    </table>
+
+</div>
+<div class="view">
+    <table>
+        <thead>
+            <tr>
+                <td *ngFor="let h of headers">{{h}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products;let i=index" (click)="getSelected(p)">
+                <td *ngFor="let h of headers">{{p[h]}}</td>
+                <td><input type="button" value="X" (click)="deleteSelected(i)"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
